@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire</title>
+    <style>
+        input:invalid {
+            border-color: red;
+        }
+        input:valid {
+            border-color: green;
+        }
+    </style>
+</head>
+<body>
+    <form id="monFormulaire">
+        <input type="text" name="nom" required>
+        <input type="submit" value="Envoyer">
+    </form>
+
+    <script>
+        const formulaire = document.getElementById('monFormulaire');
+        const champSaisie = formulaire.querySelector('input[name="nom"]');
+
+        champSaisie.addEventListener('input', () => {
+            if (champSaisie.validity.valueMissing) {
+                champSaisie.setCustomValidity('Ce champ est obligatoire');
+            } else {
+                champSaisie.setCustomValidity('');
+            }
+        });
+    </script>
+</body>
+</html>
